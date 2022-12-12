@@ -1,0 +1,44 @@
+
+    <% layout('layouts/boilerplate')%>
+    <h1>All Groceries!</h1>
+    
+    <h2><a href="/groceries/new">Add New Groceries</a></h2>
+    <p>
+        <form action="/adminProductSearch" method="GET" class="form-inline">
+          <div>
+            <input type="text" name="search" placeholder="Search Products!" class="form-control">
+            <input type="submit" value="search" class="btn btn-primary">
+          </div>
+        </form>
+      </p>
+    <ul>
+        <% for (let grocery of groceries) {%>
+          
+           <div class="card" mb-3>
+               <div class="row">
+                   <div class="col-md-4">
+                    
+                        
+                       <img class="img-fluid" src="<%=grocery.image[0].url%>" alt="">
+                       
+                   </div>
+                   <div class="col-md-8">
+                       <div class="card-body">
+                           <h5 class="card-title"><%=grocery.name%></h5>                                                         
+                           <p class="card-text"><%=grocery.description%></p>
+                           <p class="card-text">
+                               <small class="text-muted"><%=grocery.category%></small>
+                           </p>
+                           <a class="btn btn-primary" href="/groceries/<%=grocery._id%>">View  <%=grocery.name%></a>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       <% }%>
+
+       
+
+    </ul>
+   
+<!--</body>
+</html>-->

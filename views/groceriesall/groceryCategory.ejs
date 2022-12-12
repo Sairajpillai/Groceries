@@ -1,0 +1,7 @@
+<% layout('layouts/boilerplate')%>
+    <h1>Product Categories</h1>
+    <%for(let cat of elenew){%>
+       <a class="btn btn-secondary rounded-pill border-dark" href="/groceries/admin/categories/<%=cat%>"> <%=cat%></a>
+    <%}%>
+ 
+

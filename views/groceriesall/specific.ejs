@@ -1,0 +1,131 @@
+<% layout('layouts/boilerplate')%>
+    <h1><%=grocery.name%></h1>
+    <h2>
+    
+        <%if(grocery.stock.length===0){%>
+            <div class="row">
+                <div class="mb-3 ">
+                    <div class="card mb-3 text-center">
+                        <div class="card-body">
+                            <label for="">No Stocks Found!Add Stocks:)</label>
+                        </div>
+                    </div></div></div>
+       <% }else{ %>
+        <div class="row">
+            <div class="mb-3 ">
+                <div class="card mb-3 text-center">
+                   
+                    
+        <ul>
+    <%for(let ele of grocery.stock){%>
+            <form action="/groceries/<%=grocery.id%>/<%=ele.id%>" method="POST">
+
+              <div class="row">
+                <div class="mb-3">
+                    <div id="groceryCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                          <%ele.image.forEach((img,i)=>{%>
+                            <div class="carousel-item <%= i===0?'active':''%>">
+                        <img  src="<%=img.url%>" class="d-block w-100" alt="..." ></div>
+                          <%})%>
+                          </div>
+                         
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#groceryCarousel" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#groceryCarousel" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
+                      </div>
+
+              
+            <div class="card-body">
+                <label  class="card-title " name="GroceryID" value="<%=grocery._id%>"></label>
+            </div>
+            
+            <div class="card-body">
+                <input class="card-title" type="text" name="eleid" value="<%=ele.id%>" readonly>
+            </div>
+            <div class="card-body">
+                <input class="card-title" type="text" name="image" value="<%=ele.image%>" readonly>
+            </div>
+            <div class="card-body">
+                <input class="card-title" type="text" name="qty" value="<%=ele.qty%>" readonly>
+            </div>
+            <div class="card-body">
+                <input class="card-title" type="text" name="avbqty" value="<%=ele.avbqty%>" readonly>
+            </div>
+            <div class="card-body">
+                <input class="card-title" type="text" name="price" value="<%=ele.price%>" readonly>
+            </div>
+            <div class="card-body">
+
+<button class="btn btn-success ">Edit</button>
+            </form>
+            <div class="card-body">
+                <div class="card-title">
+            <form class="d-inline" action="/groceries/<%=grocery.id%>/stock/<%=ele.id%>?_method=DELETE" method="POST">
+                <button class="btn btn-danger ">Delete</button>
+            </form></div></div>
+                
+        <%}%>
+          </div>
+    </ul>
+                </div></div></div>
+           <% }%>
+    <h2>Edit Grocery!</h2>
+    <a href="/groceries/<%=grocery.id%>/editGrocery">Edit Main Grocery!</a>
+    <a href="/groceries">Back to Groceries!</a>
+    <a href="/groceries/<%=grocery.id%>/stockadd">Add Stock!</a>
+    <form action="/groceries/<%=grocery.id%>?_method=DELETE" method="POST">
+    <button>Delete</button>
+    </form>
+
+
+
+
+
+    <div class="row">
+        <div class="mb-3">
+            <div id="groceryCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <%grocery.image.forEach((img,i)=>{%>
+                  <div class="carousel-item <%= i===0?'active':''%>">
+                    <img src="<%=img.url%>" class="d-block w-100" alt="...">
+                  </div>
+                  <%})%>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#groceryCarousel" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#groceryCarousel" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+
+            <div class="card mb-3">
+                <div class="card-body">
+                  <h5 class="card-title"><%=grocery.name%></h5>
+                  <p class="card-text"><%=grocery.category%></p>
+                  <p class="card-text"><small class="text-muted"><%=grocery.description%></small></p>
+                </div>
+                <div class="card-body">
+                    <a class="fs-4 card-link btn btn-warning" href="/groceries/<%=grocery.id%>/editGrocery" >Edit Main Grocery!</a>
+                    <a class="fs-4 card-link btn btn-secondary" href="/groceries" >Back to Groceries!</a>
+                    <a class="fs-4 card-link btn btn-success" href="/groceries/<%=grocery.id%>/stockadd" >Add Stock!</a>
+                  </div>
+                  <div class="card-body">
+                  <form class="d-inline" action="/groceries/<%=grocery.id%>?_method=DELETE" method="POST">
+                    <button class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+              </div>
+        </div>
+    </div>
+
+    

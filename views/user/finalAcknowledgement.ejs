@@ -1,0 +1,26 @@
+<% layout('layouts/boilerplate')%>
+    <form action="/user/finalOrderPage" method="POST">
+    <div class=" d-flex justify-content-center">
+    
+    <div class="card text-center mb-3" style="width: 18rem;">
+        <div class="card-title"><h1>Order Confirmed!</h1></div>
+        <h1>Name:<%=cart2.daddress.name%></h1>
+        <div class="card-body">
+            <div class="card-title">
+                  <label for="cartId">OrderID</label>
+                  <input type="text" name="cartId" id="cartId" value="<%=cart2._id%>" style="border:none;border-color: transparent;" readonly>
+            </div>`
+            <input type="hidden" value="<%=cart2.userId%>" name="userId" hidden>
+           
+           <p>Address:<%=cart2.daddress.door%><%=cart2.daddress.street%><%=cart2.daddress.landmark%><%=cart2.daddress.city%><%=cart2.daddress.state%><%=cart2.daddress.pincode%></p>
+           <h5>Total Amount:<%=cart2.totalAmount%></h5>
+           <h5>Delivery Date:    <%=cart2.ddate%></h4>
+           <h5>Time:Between    8AM to 5PM</h5>
+          
+          <button class="btn btn-primary">Home!</button>
+
+        </div>
+
+    </div>
+</div>
+</form>

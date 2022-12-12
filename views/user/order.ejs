@@ -1,0 +1,58 @@
+
+<% layout('layouts/userBoilerplate')%>
+
+<div class="container d-flex justify-content-center align-items-center mt-5 mb-3">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 col-xl-6 offset-xl-4">
+            <div class="card shadow">
+                <img src="https://images.unsplash.com/photo-1441123285228-1448e608f3d5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80"
+                    alt="" class="card-img-top" />
+                <div class="card-body">
+                    <h5 class="card-title">Payment & Delivery</h5>
+                    <form action="/order" method="Post" class="validated-form" novalidate>
+                       <div class="select mb-3">
+            <select class="form-select"name="slct" id="slct">
+              <option selected disabled>Payment Method </option>
+              <option value="COD">COD</option>
+              <option value="ONLINE/CARD">ONLINE/CARD</option>
+              
+            </select>
+          </div>  
+                        <div class="mb-3">
+                          <label class="form-label" for="name">Delivery Receiver Name</label>
+                          <input class="form-control" type="text" id="name" name="oadd[name]" required>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label" for="door">Door No</label>
+                      <input class="form-control"type="text" id="door" name="oadd[door]" required>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label" for="street">Street</label>
+            <input class="form-control"type="text" id="street" name="oadd[street]" required>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label" for="landmark">Landmark</label>
+            <input class="form-control"type="text" id="landmark" name="oadd[landmark]" required>
+                        </div>
+                        <div class="mb-3">
+                          <label class="form-label" for="city">City</label>
+                          <input class="form-control"type="text" id="city" name="oadd[city]" required>
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label" for="state">State</label>
+            <input class="form-control"type="text" id="state" name="oadd[state]" required>
+                            </div>
+                            <div class="mb-3">
+                              <label class="form-label" for="pincode">Pincode</label>
+                              <input class="form-control"type="text" id="pincode" name="oadd[pincode]" required>
+                              </div>
+                             
+                    
+                    <button class="btn btn-success" type="submit">Submit</button>
+                    
+                    </form> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

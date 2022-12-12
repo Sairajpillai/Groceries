@@ -1,0 +1,67 @@
+<% layout('layouts/userBoilerplate')%>
+  
+
+    <div class="container d-flex justify-content-center align-items-center mt-5 mb-3">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+                <div class="card shadow">
+                    <img src="https://images.unsplash.com/photo-1485637701894-09ad422f6de6?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=900&ixid=MnwxfDB8MXxyYW5kb218MHwxNTc3MDc1fHx8fHx8fDE2MzUwNzc3NDI&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1600"
+                        alt="" class="card-img-top" />
+                    <div class="card-body">
+                        <h5 class="card-title">Register</h5>
+                        <form action="/verRegister" method="POST" class="validated-form" novlaidate>
+                            <div class="mb-3">
+                                <label class="form-label" for="username">Username</label>
+                                <input class="form-control" type="text" id="username" name="username" value="<%=username%>" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="email">Email</label>
+                                <input class="form-control" type="text" id="email" name="email" value="<%=email%>" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="password">Password</label>
+                                <input class="form-control" type="password" id="username" name="password" value="<%=password%>" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="drname"> Name:</label>
+                                <input class="form-control" type="text" id="drname" name="address[drname]" >
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="door">Door/Flat</label>
+                                <input class="form-control" type="text" id="door" name="address[door]" >
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="street">Street Name:</label>
+                                <input class="form-control" type="text" id="street" name="address[street]" >
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="landmark">Landmark</label>
+                                <input class="form-control" type="text" id="landmark" name="address[landmark]" >
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="city">City</label>
+                                <input class="form-control" type="text" id="city" name="address[city]" >
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="state">State</label>
+                                <input class="form-control" type="text" id="state" name="address[state]" >
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="pincode">Pincode</label>
+                                <input class="form-control" type="number" id="pincode" name="address[pincode]" >
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="dob">Enter Date of Birth:</label>
+                                <input class="form-control" type="date" id="dob" name="dob" >
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="contact">Contact</label>
+                                <input class="form-control" type="number" id="contact" name="contact" >
+                            </div>
+                            <button class="btn btn-success btn-block" type="submit">Submit</button>
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

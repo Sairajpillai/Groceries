@@ -1,0 +1,16 @@
+<% layout('layouts/boilerplate')%>
+    <h1><%=uemail%></h1>
+    <form action="/verotpcpass" method="POST">
+        <div>
+        <label for="email">Email ID!</label>
+        <input type="email" id="email" name="email" value=<%=uemail%> readonly>
+    </div>
+
+    <div>
+        <label for="npass">Enter New Password!</label>
+        <input type="text" id="npass" name="npass">
+    </div>
+    <div>
+        <button input type="submit">Submit!</button>
+    </div>
+    </form>

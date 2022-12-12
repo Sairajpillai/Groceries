@@ -1,0 +1,75 @@
+<% layout('layouts/userBoilerplate')%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap:wrap;
+  flex-grow: 2;
+}
+.card-body{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+    </style>
+    
+</head>
+<body>
+ 
+  
+    <%for (let product of grocery.stock){%>  
+      <form action="/user/categories/<%=grocery._id%>/cart/x" method="POST"> 
+        <div class="container ">
+        <div class="card mb-3" style="width: 45rem;">
+            <img src="<%=product.image%>" class="card-img-top " alt="...">
+            <div class=" card-body ">
+              <h5 class="card-title"><%=grocery.name%></h5>
+              
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item" id="qty1" style="text-align: center;">QTY:<%=product.qty%></li>
+              <li class="list-group-item" style="text-align: center;"><p>&#8377&nbsp<%=product.price%></p></li>
+            </ul>
+            <div class="card-body">
+              <a href="#" class="card-link btn btn-danger" >Remove from Cart</a>
+              <p>&nbsp;</p>
+              
+          
+
+               
+              <select  id="qty" name="qty" class="btn btn-outline-secondary" >
+                <option value="1" >Select QTY</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <p>&nbsp;</p>
+              
+              <button class="card-link btn btn-success">Submit</button>
+           
+            </div>
+          </div>
+        </div>
+        
+        <%}%>
+      
+      </form>
+     
+</body>
+</html>

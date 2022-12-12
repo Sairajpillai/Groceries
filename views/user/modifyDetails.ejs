@@ -1,0 +1,21 @@
+<% layout('layouts/userBoilerplate')%>
+<form action="/bModify" method="post">
+    <label for="userName">UserName:</label>
+    <input type="text" name="userName" id="userName" >
+    <label for="receiverName">ReceiverName:</label>
+    <input type="text" name="receiverName" id="receiverName" >
+    <label for="Door">Door No:</label>
+    <input type="text" name="Door" id="Door" >
+    <label for="Street">Street:</label>
+    <input type="text" name="Street" id="Street" >
+    <label for="landmark">landmark:</label>
+    <input type="text" name="landmark" id="landmark" >
+    <label for="city">city:</label>
+    <input type="text" name="city" id="city" required>
+    <label for="state">state:</label>
+    <input type="text" name="state" id="state" required>
+    <label for="pincode">pincode:</label>
+    <input type="text" name="pincode" id="pincode" required>
+    <button>Edit</button>
+</form>
+

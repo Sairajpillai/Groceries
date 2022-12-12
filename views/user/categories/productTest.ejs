@@ -1,0 +1,267 @@
+<% layout('layouts/userBoilerplate')%>
+
+   
+    <%for(let ele of grocery.stock){%>
+        <div class="card mb-3 text-center" >
+        <div class="card-body">
+            <img src="<%=ele.image%>" class="card-img-top " alt="...">
+            <div class=" card-body ">
+              <h5 class="card-title"><%=grocery.name%></h5>
+              
+            </div>
+    <div class="container">
+        <div class="row card-body">
+            <div class="col-xs-3 col-xs-offset-3">
+                <div class="input-group number-spinner ">
+                    <span class="input-group-btn card-body">
+                        <button class="btn btn-default" data-dir="dwn"><span class="glyphicon glyphicon-minus"></span></button>
+                    </span>
+                    <div class="card-body">
+                    <form action="/user/categories/<%=grocery._id%>/cart/<%=ele._id%>" method="POST">
+                    <input type="number" class="form-control text-center" name="qty" value="0">
+                    <div class="card-body">
+                    <button class="btn btn-default" style="width: 100%;">Submit</button></div>
+                </form></div>
+                    <span class="input-group-btn card-body">
+                        <button class="btn btn-default" data-dir="up"><span class="glyphicon glyphicon-plus"></span></button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<%}%>
+
+    <script>
+        $(document).on('click', '.number-spinner button', function () {    
+	var btn = $(this),
+		oldValue = btn.closest('.number-spinner').find('input').val().trim(),
+		newVal = 0;
+	
+	if (btn.attr('data-dir') == 'up') {
+		newVal = parseInt(oldValue) + 1;
+	} else {
+		if (oldValue > 0) {
+			newVal = parseInt(oldValue) - 0;
+		} else {
+			newVal = 0;
+		}
+	}
+	btn.closest('.number-spinner').find('input').val(newVal);
+});
+    </script>
+</body>
+</html>
+
+
+New One 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    
+    <style>
+       
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+        
+        
+        input[type=number] {
+          -moz-appearance: textfield;
+        }
+       
+        .container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap:wrap;
+  flex-grow: 2;
+}
+.card-body{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+    </style>
+</head>
+<body>
+    
+    <%for(let ele of grocery.stock){%>
+        <div class="container">
+        <div class="card mb-3 text-center" style="width: 50rem;">
+            <img src="<%=ele.image%>" class="card-img-top" alt="...">
+            <div class="card-body text-center">
+              <h5 class="card-title"><%=grocery.name%></h5>
+             
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">QTY:<%=ele.qty%></li>
+              <li class="list-group-item"><p>&#8377&nbsp<%=ele.price%></p></li>
+              
+            </ul>
+            <div class="card-body">
+             <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a>
+              
+              
+                
+                    <div class="col-xs-3 col-xs-offset-3">
+                        <div class="input-group number-spinner">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" data-dir="dwn"><span class="glyphicon glyphicon-minus"></span></button>
+                            </span>
+                            <input type="text" class="form-control text-center" value="1">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" data-dir="up"><span class="glyphicon glyphicon-plus"></span></button>
+                            </span>
+                        </div>
+                    </div>
+                
+            
+
+            </div>
+          </div>
+        </div>
+    <%}%>
+    <script>
+        $(document).on('click', '.number-spinner button', function () {    
+	var btn = $(this),
+		oldValue = btn.closest('.number-spinner').find('input').val().trim(),
+		newVal = 0;
+	
+	if (btn.attr('data-dir') == 'up') {
+		newVal = parseInt(oldValue) + 1;
+	} else {
+		if (oldValue > 0) {
+			newVal = parseInt(oldValue) - 0;
+		} else {
+			newVal = 0;
+		}
+	}
+	btn.closest('.number-spinner').find('input').val(newVal);
+});
+    </script>
+</body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src=" https://unpkg.com/bootstrap-input-spinner@1.12.6/src/bootstrap-input-spinner.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+<style>
+       .container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap:wrap;
+  flex-grow: 2;
+}
+
+
+</style>
+</head>
+<body>
+ 
+
+        
+        <%for(let ele of grocery.stock){%>
+          <%if(ele.avbqty==0){%>
+            <div class="container mt-3 mb-3 text-center">
+              <div class="card" style="width: 30rem;">
+                <img src="<%=ele.image[0].url%>" class="card-img-top" alt="...">
+<div class="card-body">
+  <div class="card-title">
+    <h1><%=grocery.name%></h1>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">QTY:<%=ele.qty%></li>
+      <li class="list-group-item" ><p>&#8377&nbsp<%=ele.price%></li>
+    </ul>
+    <h2>Out of Stock!</h2>
+  </div>
+</div>
+              </div>
+            </div>
+
+         <% }else{%>
+
+          <div class="container mt-3 mb-3 text-center">
+            <div class="card" style="width: 30rem;">
+              <img src="<%=ele.image[0].url%>" class="card-img-top" alt="...">
+<div class="card-body">
+<div class="card-title">
+  <h1><%=grocery.name%></h1>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">QTY:<%=ele.qty%></li>
+    <li class="list-group-item" ><p>&#8377&nbsp<%=ele.price%></li>
+  </ul>
+
+  <div class="card-body">
+    <label for="add-to-cart">Select QTY:</label>
+      <form action="/user/categories/<%=grocery._id%>/cart/<%=ele._id%>" method="POST"> 
+                  <input type="hidden" value="<%=ele.price%>" name="price" hidden>
+             <input type="hidden" value="<%=grocery.category%>" name="category" hidden>
+             <input type="hidden" value="<%=grocery.name%>" name="name" hidden>
+             <input type="hidden" value="<%=ele.image[0].url%>" name="image" hidden>
+             <input type="hidden" value="<%=ele.avbqty%>" name="avbqty" hidden>
+
+                    <input type="number" title="qty" name="qty" id="add-to-cart" value="1" class="border-primary"><br>
+                    <button class="btn btn-primary">Add To Cart</button>
+                   
+                      
+                  </form>
+                  <div class="card-body">
+      <form action="/user/removeFromCart/<%=grocery._id%>/<%=ele._id%>/<%=grocery.category%>?_method=DELETE"method="POST">
+        <button class="btn btn-danger ">Remove From Cart</button>
+      </form></div>
+
+  </div>
+
+</div>
+      
+
+</div>
+</div>
+            </div>
+          </div>
+
+          <%}%>
+          <%}%>
+
+
+
+        <a class="container mt-3 mb-3 btn btn-warning" href="/cartPriceCheck">View Cart</a>
+        
+  <script>
+     !function(t){"use strict";var n=!1,e=t.fn.val;
+     function o(t,e){t.addEventListener("mousedown",function(t){t.preventDefault(),e(t)}),t.addEventListener("touchstart",function(t){t.cancelable&&t.preventDefault(),e(t)}),t.addEventListener("keydown",function(t){32!==t.keyCode||n||(n=!0,e(t))})}t.fn.val=function(t){return arguments.length>=1&&this[0]&&this[0]["bootstrap-input-spinner"]&&this[0].setValue&&this[0].setValue(t),
+     e.apply(this,arguments)},t.fn.InputSpinner=t.fn.inputSpinner=function(e){var a={decrementButton:"<strong>-</strong>",incrementButton:"<strong>+</strong>",groupClass:"",
+     buttonsClass:"btn-outline-primary",buttonsWidth:"2.5rem",textAlign:"center",autoDelay:500,autoInterval:100,boostThreshold:10,boostMultiplier:"auto",locale:null};
+     for(var r in e)a[r]=e[r];var i='<div class="input-group '+a.groupClass+'"><div class="input-group-prepend"><button style="min-width: '+a.buttonsWidth+'" class="btn btn-decrement '+a.buttonsClass+'" type="button">'+a.decrementButton+'</button></div><input type="text" style="text-align: '+a.textAlign+'" class="form-control"/><div class="input-group-append"><button style="min-width: '+a.buttonsWidth+'" class="btn btn-increment '+a.buttonsClass+'" type="button">'+a.incrementButton+"</button></div></div>",
+     u=a.locale||navigator.language||"en-US";this.each(function(){var e=t(this);
+        e[0]["bootstrap-input-spinner"]=!0,e.hide();var r=null,p=null,s="auto"===a.boostMultiplier,l=s?1:a.boostMultiplier,c=t(i),d=c.find(".btn-decrement"),m=c.find(".btn-increment"),f=c.find("input"),v=null,b=null,g=null,h=null,y=null;
+        V();var x,E,w=new Intl.NumberFormat(u,{minimumFractionDigits:y,maximumFractionDigits:y}),F=parseFloat(e[0].value),M=0,I=e.attr("data-prefix")||"",N=e.attr("data-suffix")||"";if(I){var C=t('<span class="input-group-text">'+I+"</span>");
+        c.find(".input-group-prepend").append(C)}if(N){var D=t('<span class="input-group-text">'+N+"</span>");
+        c.find(".input-group-append").prepend(D)}function L(t,n){void 0===n&&(n=!0),isNaN(t)||""===t?(e[0].value="",n&&(f[0].value=""),F=0):(t=parseFloat(t),t=Math.min(Math.max(t,v),b),t=Math.round(t*Math.pow(10,y))/Math.pow(10,y),e[0].value=t,n&&(f[0].value=w.format(t)),F=t)}function T(t,n){n&&setTimeout(function(){var e;"function"==typeof Event?e=new Event(n,{bubbles:!0}):(e=document.createEvent("Event")).initEvent(n,!0,!0),t[0].dispatchEvent(e)})}function k(t){f[0].disabled||(B(t),S(),
+        r=setTimeout(function(){p=setInterval(function(){M>a.boostThreshold?s?(B(t*parseInt(l,10)),l<1e8&&(l*=1.1),h&&(l=Math.min(h,l))):B(t*l):B(t),M++},a.autoInterval)},a.autoDelay))}function B(t){isNaN(F)&&(F=0),L(Math.round(F/t)*t+t),T(e,"input"),T(e,"change")}function S(){M=0,l=l=s?1:a.boostMultiplier,clearTimeout(r),clearTimeout(p)}function V(){f.prop("required",e.prop("required")),f.prop("placeholder",e.prop("placeholder"));var t=e.prop("disabled");f.prop("disabled",t),m.prop("disabled",t),d.prop("disabled",t),t&&S();
+        var n=e.prop("class"),o="";/form-control-sm/g.test(n)?o="input-group-sm":/form-control-lg/g.test(n)&&(o="input-group-lg");var r=n.replace(/form-control(-(sm|lg))?/g,"");c.prop("class","input-group "+o+" "+a.groupClass),f.prop("class","form-control "+r),v=parseFloat(e.prop("min"))||0,b=isNaN(e.prop("max"))||""===e.prop("max")?1/0:parseFloat(e.prop("max")),g=parseFloat(e.prop("step"))||1,h=parseInt(e.attr("data-step-max"))||0;var i=parseInt(e.attr("data-decimals"))||0;y!==i&&(y=i,w=new Intl.NumberFormat(u,{minimumFractionDigits:y,maximumFractionDigits:y}))}
+        e[0].setValue=function(t){L(t)},new MutationObserver(function(){V(),L(F,!0)}).observe(e[0],{attributes:!0}),e.after(c),L(F),f.on("paste input change focusout",function(t){var n,o,a,r,i=f[0].value,p="focusout"===t.type;n=i,o=new Intl.NumberFormat(u),a=o.format(1111).replace(/1/g,""),r=o.format(1.1).replace(/1/g,""),L(i=parseFloat(n.replace(new RegExp("\\"+a,"g"),"").replace(new RegExp("\\"+r),".")),p),T(e,t.type)}),o(d[0],function(){k(-g)}),o(m[0],function(){k(g)}),x=document.body,E=function(){S()},
+        x.addEventListener("mouseup",function(t){E(t)}),x.addEventListener("touchend",function(t){E(t)}),x.addEventListener("keyup",function(t){32===t.keyCode&&(n=!1,E(t))})})}}(jQuery);
+
+ $("input[type='number']").inputSpinner()
+  </script>
+  
+</body>
+</html>

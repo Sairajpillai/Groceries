@@ -1,0 +1,88 @@
+<% layout('layouts/userBoilerplate')%>
+<link rel="stylesheet" href="/stylesheets/stars.css">
+
+    <div class="d-flex justify-content-center">
+   <% for(let ele of cart.products){%>
+    <div class="card text-center">
+       <img src="<%=ele.image%>" class="card-img-top" alt="">
+        <div class="card-title">
+           <h3>Product Name:  <%=ele.name%></h3>
+        </div>
+        <div class="card-body">
+            <p>QTY:  <%=ele.quantity%></p>
+            <p>Price: <%=ele.tprice%></p>
+            <p>Category:  <%=ele.category%></p>
+            
+           
+        </div>
+        
+    
+    </div>
+</div>
+<%}%>
+<%if(cart.outOfStock){%>
+    <% for(let ele of cart.outOfStock){%>
+        <div class="card text-center">
+            <img src="<%=ele.image%>" class="card-img-top" alt="">
+             <div class="card-title">
+                <h3>Product Name:  <%=ele.name%></h3>
+             </div>
+             <div class="card-body">
+                 <p>QTY:  <%=ele.quantity%></p>
+                 <p>Price: <%=ele.tprice%></p>
+                <h3>Out of Stock!</h3>
+                 
+                
+             </div>
+             
+         
+        <%}%>
+    <%}%>
+<p class="d-flex justify-content-center">Booked Date:  <%=cart.bdate%></p>
+<p class="d-flex justify-content-center">Delivery Date:  <%=cart.ddate%></p>
+<p class="d-flex justify-content-center">Payment Mode:  <%=cart.paytype%></p>
+<p class="d-flex justify-content-center">Total Amount: &nbsp&#8377&nbsp<%=cart.totalAmount%></p>
+<a class="btn btn-primary d-flex justify-content-center" href="/viewOrders">Back</a>
+        </div>
+        <%if( cart.ratings[0] || cart.ratings===null){%>
+
+            
+           <div class="mb-3 mt-3 container">
+               <div class="card ">
+                   <div class="card-body">
+                  <!-- <h5 class="card-title">Rating:<%=cart.ratings.nstars%></h5>-->
+
+                   <p class="starability-result" data-rating="<%=cart.ratings[0].nstars%>">
+                       Rated <%=cart.ratings[0].nstars%> Stars
+                   </p>
+                   <p class="card-text">Review:<%=cart.ratings[0].description%></p>
+                   </div>
+               </div>
+               
+           </div>  
+        <%}else{%>
+        <h2 class="text-center">Leave a Review!</h2>
+<form action="/user/<%=cart._id%>/review" class="mb-3" method="POST">
+    <div class="mb-3">
+    <fieldset class="starability-basic">
+        <legend>Rating:</legend>
+        <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
+        <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+        <label for="first-rate1" title="Terrible">1 star</label>
+        <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+        <label for="first-rate2" title="Not good">2 stars</label>
+        <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+        <label for="first-rate3" title="Average">3 stars</label>
+        <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+        <label for="first-rate4" title="Very good">4 stars</label>
+        <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+        <label for="first-rate5" title="Amazing">5 stars</label>
+      </fieldset></div>
+    <div class="mb-3">
+        <label class="form-label" for="body">Review</label>
+            <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3"></textarea>
+        
+    </div>
+    <button class="btn btn-success">Submit</button>
+</form>
+<%}%>

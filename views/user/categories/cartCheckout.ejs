@@ -1,0 +1,84 @@
+
+    
+    <%for(let ele of cart.products){%>
+<img src="<%=ele.image%>" alt="<%=ele.name%>">
+<h2><%=ele.quantity%></h2>
+<h2><%=ele.name%></h2>
+<h3><%=ele.tprice%></h3>
+<form action="/user/categories/<%=ele.category%>/<%=ele.groceryId%>" method="GET">
+<button class="btn btn-primary">Modify Product</button>
+</form>
+<form action="/user/categories/<%=ele.groceryId%>/cart/<%=ele.productId%>">
+    <button>Delete Product</button>
+    </form>
+    
+<%}%>
+        
+        
+</body>
+</html>-->
+
+<% layout('layouts/userBoilerplate')%>
+
+<h1 class="container"><p style="text-align: center;font-size:xx-large;">CART</p></h1>
+
+<ul>
+    
+    <% for (let ele of cart.products) {%>
+        
+     <div class="container">
+       <div class="card" mb-3>
+           <div class="row">
+               <div class="col-md-4">
+                   <img class="img-fluid" src="<%=ele.image%>" alt="">
+               </div>
+               <div class="col-md-8">
+                   <div class="card-body">
+                       <h5 class="card-title"><%=ele.name%></h5>                                                         
+                       <p class="card-text">QTY:  <%=ele.quantity%></p>
+                       <p class="card-text">
+                          PRICE:&nbsp&#8377&nbsp<%=ele.tprice%>
+                       </p>
+                       <a class="btn btn-primary" href="/user/categories/<%=ele.category%>/<%=ele.groceryId%>">Modify Product</a>
+                   </div>
+               </div>
+           </div>
+       </div>
+    </div>
+   
+   <% }%>
+ 
+   <%if(cart.outOfStock){%>
+    <%for(let ele of cart.outOfStock){%>
+    <div class="container">
+        <div class="card" mb-3>
+            <div class="row">
+                <div class="col-md-4">
+                    <img class="img-fluid" src="<%=ele.image%>" alt="">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title"><%=ele.name%></h5>                                                         
+                        <p class="card-text">QTY:  <%=ele.quantity%></p>
+                        <p class="card-text">
+                            PRICE:&nbsp&#8377&nbsp<%=ele.tprice%>
+                         </p>
+                        <p class="card-text display-5">
+                          <strong>Out of Stock!</strong>
+                        </p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+<% }%>
+<%}%>
+</ul>
+
+
+
+
+<label class="container" for="" ><p style="text-align: center;font-size: x-large;">Total Amount  &nbsp&#8377 <%=amount%></p></label>
+<a class="container btn btn-success mb-3" href="/user/userCategories" ><p style="text-align: center;font-size: x-large;">Add More Products!</p></a>
+<a class="container btn btn-warning mb-3" href="/user/order" ><p style="text-align: center;font-size: x-large;">Place Order!</p></a>

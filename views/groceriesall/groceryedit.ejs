@@ -1,0 +1,39 @@
+<% layout('layouts/boilerplate')%>
+ 
+
+    <div class="row">
+        <h1 class="text-center">Edit Grocery</h1>
+        <div class="col-6 offset-3">
+            <form action="/groceries/<%=gid%>/edit/<%=abc.eleid%>?_method=PUT" method="POST"  novalidate class="validated-form" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label" for="GroceryID">GroceryID</label>
+            <input class="form-control" type="text" id="GroceryID" name="GroceryID" value="<%=gid%>" readonly required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="EleID">EleID</label>
+                    <input class="form-control" type="text" id="EleID" name="EleID" value="<%=abc.eleid%>" readonly required>
+                </div>
+                <input type="file" name="image" id="" multiple="true">
+                <div class="mb-3">
+                    <label class="form-label" for="qty">QTY</label>
+                    <input class="form-control" type="text" id="qty" name="QTY" value="<%=abc.qty%>" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="price">Price</label>
+                    <input class="form-control" type="text" id="price" name="PRICE" value="<%=abc.price%>" required>
+
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="avbqty">AvbQty</label>
+            <input class="form-control" type="text" id="avbqty" name="AVBQTY"  value="<%=abc.avbqty%>" required>
+                </div>
+                 
+                <div class="mb-3">
+                    <button class="btn btn-success">Submit</button>
+                </div>
+            </form>
+            <div class="mb-3"> <a href="/groceries/<%=gid%>">Back to Specific Products!</a></div>
+        </div>
+    </div>
+
+   
